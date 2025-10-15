@@ -144,12 +144,13 @@ export const ChatInterface = ({ messages, onSendMessage, isLoading, onGeneratePl
                   <div className={`flex flex-col ${isUser ? 'items-end' : 'items-start'}`}>
                     <div
                       className={`rounded-2xl px-4 py-3 ${isUser ? 'bg-primary text-primary-foreground mr-3' : 'bg-muted ml-3'}`}
-                      style={{ maxWidth: '90%', wordBreak: 'break-word', overflowWrap: 'break-word', whiteSpace: 'pre-wrap', textAlign: isUser ? 'right' as const : 'left' as const }}
+                      style={{ maxWidth: '90%', wordBreak: 'break-word', overflowWrap: 'break-word', textAlign: isUser ? 'right' as const : 'left' as const }}
                     >
                       {group.messages.map((m) => (
                         <div key={m.id} className="mb-2 last:mb-0">
                           {isUser ? (
-                            <p className="text-sm leading-relaxed" style={{ whiteSpace: 'pre-wrap', margin: 0 }}>{m.content}</p>
+                            // Keep the bubble right-anchored, but left-align wrapped text inside it
+                            <p className="text-sm leading-relaxed" style={{ whiteSpace: 'normal', textAlign: 'left', margin: 0 }}>{m.content}</p>
                           ) : (
                             <div className="text-sm prose prose-sm dark:prose-invert max-w-none prose-p:my-2 prose-ul:my-2 prose-ol:my-2 prose-li:my-1" style={{ overflowWrap: 'break-word', wordBreak: 'break-word', whiteSpace: 'pre-wrap' }}>
                               <ReactMarkdown>{m.content}</ReactMarkdown>
