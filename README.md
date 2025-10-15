@@ -4,6 +4,13 @@ A small app that uses a chat UI + AI to generate actionable task plans and expor
 
 This README explains how to run the project locally after cloning from GitHub on Windows (PowerShell).
 
+# Smart Task Manager
+
+You can watch a video demo of the how this app works here
+
+https://www.youtube.com/watch?v=bJSB_zVNm7g
+
+
 ## Prerequisites
 
 - Node.js (>= 18 recommended)
