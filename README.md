@@ -108,19 +108,6 @@ The frontend includes `ApiKeySetup` UI which can prompt you to supply an API key
 - Frontend can't reach backend or API:
   - Check frontend `env` variables and CORS settings in `backend/src/index.ts`.
 
-- Package-lock still contains unwanted packages (e.g., leftover scaffolding):
-  - In `frontend/` run `npm install` to regenerate `package-lock.json` from `package.json`.
-
-## Optional: regenerate lockfile
-
-If your `package-lock.json` still references unwanted packages (e.g. scaffolding tags), regenerate it:
-
-```powershell
-cd frontend
-copy package-lock.json package-lock.json.bak
-npm install
-```
-
 ## Contributing
 
 - Create a branch, make changes, run tests (if any), and open a pull request.
