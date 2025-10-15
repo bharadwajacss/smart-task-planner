@@ -224,16 +224,21 @@ const Index = () => {
       setGoalTitle(result.goalTitle);
   // show the task panel when a plan is generated
   setShowTaskPanel(true);
+      // Build a human-readable plan summary and persist it to the chat so users can query it later
+      const planLines: string[] = [];
+      planLines.push(`Task plan for "${result.goalTitle}":`);
+      result.tasks.forEach((t, i) => {
+        const deps = (t.dependencies && t.dependencies.length) ? ` Dependencies: ${t.dependencies.join(', ')}.` : '';
+        planLines.push(`${i + 1}. ${t.title} — ${t.description || ''} ${t.deadline ? `Deadline: ${t.deadline}.` : ''} Priority: ${t.priority || 'medium'}.${deps}`);
+      });
+      const planText = planLines.join('\n');
+
       const assistantMessage = await chatStorage.addMessage(currentChat.id, {
         role: 'assistant',
-        content: `I've created a task plan for "${result.goalTitle}" with ${result.tasks.length} tasks.`,
+        content: planText,
       });
 
-      setCurrentChat((prev) =>
-        prev
-          ? { ...prev, messages: [...prev.messages, assistantMessage] }
-          : prev
-      );
+      setCurrentChat((prev) => (prev ? { ...prev, messages: [...prev.messages, assistantMessage] } : prev));
 
   // Do not show the task panel automatically. Panel remains hidden unless explicitly toggled.
       try {
