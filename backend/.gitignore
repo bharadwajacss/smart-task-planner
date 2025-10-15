@@ -1,0 +1,11 @@
+# Node
+node_modules
+npm-debug.log*
+
+# Local env files
+.env
+.env.local
+!.env.example
+
+# Build
+dist

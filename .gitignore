@@ -1,0 +1,20 @@
+# Node modules
+node_modules/
+
+# Local env files
+.env
+.env.local
+# allow env example files to be committed
+!.env.example
+
+# Build output
+dist/
+build/
+
+# IDE/editor
+.vscode/
+.idea/
+.DS_Store
+
+# Logs
+npm-debug.log*
