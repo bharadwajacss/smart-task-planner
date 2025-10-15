@@ -265,8 +265,27 @@ const Index = () => {
     setGoalTitle('');
   };
 
-  if (!user) return <AuthForm onAuthSuccess={handleAuthSuccess} />;
-  if (!hasApiKey) return <ApiKeySetup onComplete={handleApiKeySetup} />;
+  if (!user) {
+    return (
+      <div className="flex h-screen flex-col bg-background">
+        <Header userName={user?.name ?? ''} onLogout={() => {}} />
+        <div className="flex-1">
+          <AuthForm onAuthSuccess={handleAuthSuccess} />
+        </div>
+      </div>
+    );
+  }
+
+  if (!hasApiKey) {
+    return (
+      <div className="flex h-screen flex-col bg-background">
+        <Header userName={user?.name ?? ''} onLogout={handleLogout} />
+        <div className="flex-1">
+          <ApiKeySetup onComplete={handleApiKeySetup} />
+        </div>
+      </div>
+    );
+  }
 
   if (!currentChat) {
   // Show simple loading state until chat is ready

@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import Logo from './Logo';
 import { useToast } from '@/hooks/use-toast';
 import { authService } from '@/lib/auth';
 
@@ -45,8 +46,8 @@ export const AuthForm = ({ onAuthSuccess }: AuthFormProps) => {
       <Card className="w-full max-w-md shadow-lg">
         <CardHeader className="space-y-1">
           <div className="flex items-center gap-2 mb-2">
-            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
-              <span className="text-2xl">✓</span>
+            <div>
+              <Logo className="w-10 h-10" />
             </div>
             <CardTitle className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
               Smart Task Planner
